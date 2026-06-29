@@ -12,6 +12,7 @@
 
 <body class="bg-gray-100 min-h-screen">
     <x-header />
+    <x-button-to-top />
 
     <main class="max-w-7xl mx-auto px-6 py-10">
         <h1 class="text-3xl font-bold text-gray-800 mb-6">Selamat Datang di Dashboard</h1>

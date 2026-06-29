@@ -71,7 +71,9 @@
         <!-- Grafik Koefisien -->
         <div class="bg-white rounded shadow p-6 mb-6">
             <h2 class="text-lg font-semibold text-gray-700 mb-4">Visualisasi Koefisien Variabel</h2>
-            <canvas id="coefChart" height="250"></canvas>
+            <div class="relative w-full" style="height: 220px;">
+                <canvas id="coefChart" role="img" aria-label="Bar chart koefisien variabel regresi TPT"></canvas>
+            </div>
         </div>
 
         <!-- Interpretasi -->
@@ -91,17 +93,39 @@
         const coefChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Lowongan', 'RLS', 'IPM', 'TPAK'],
+                labels: ['Lowongan Kerja', 'RLS 2024', 'IPM 2024', 'TPAK Agustus'],
                 datasets: [{
                     label: 'Koefisien',
                     data: [0.389, 0.603, -0.455, -0.558],
-                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444']
+                    backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    barThickness: 40
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => 'Koefisien: ' + ctx.parsed.y.toFixed(3)
+                        }
+                    }
+                },
                 scales: {
+                    x: {
+                        ticks: { color: '#6b7280', font: { size: 12 } },
+                        grid: { display: false }
+                    },
                     y: {
-                        beginAtZero: true
+                        ticks: {
+                            color: '#6b7280',
+                            font: { size: 12 },
+                            callback: v => v.toFixed(2)
+                        },
+                        grid: { color: '#e5e7eb' }
                     }
                 }
             }
