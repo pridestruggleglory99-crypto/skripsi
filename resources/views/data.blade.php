@@ -9,9 +9,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
+<x-header />
+
 <body class="bg-gray-100 min-h-screen antialiased">
 
-    <x-header />
+    
     <x-button-to-top />
 
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-5">
